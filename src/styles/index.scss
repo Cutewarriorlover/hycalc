@@ -1,0 +1,23 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*:not(code):not(pre) {
+  font-family: Montserrat;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat Medium"), local("Montserrat-Medium"),
+    url("../../assets/Montserrat-Medium.woff2") format("woff2"),
+    url("../../assets/Montserrat-Medium.ttf") format("truetype"),
+    url("../../assets/Montserrat-Medium.svg#Montserrat-Medium") format("svg");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+#root {
+  height: 100vh;
+}

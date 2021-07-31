@@ -1,0 +1,16 @@
+### yarn ###
+# https://yarnpkg.com/advanced/qa#which-files-should-be-gitignored
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+### Node ###
+
+node_modules/
+dist/
+docs/
+
+yarn-error.log

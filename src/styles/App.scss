@@ -1,0 +1,56 @@
+.App {
+  height: calc(100% - 10rem);
+
+  background-image: url("../../assets/hub.png");
+  background-size: cover;
+
+  padding: 5rem;
+
+  .content {
+    margin: 0 auto;
+    padding: 1.875rem;
+    max-width: 1080px;
+
+    background-color: rgba($color: black, $alpha: 0.5);
+    backdrop-filter: blur(2px);
+    border-radius: 16px;
+    border: 2px solid white;
+
+    color: white;
+
+    h1 {
+      text-decoration: underline 4px #0bca51;
+      padding-left: 0.3125rem;
+      margin-bottom: 0.9375rem;
+    }
+
+    p {
+      font-size: 1.15rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: rgb(173, 216, 230);
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background-color: rgb(173, 216, 230);
+        transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover::before {
+          left: 0;
+          right: auto;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

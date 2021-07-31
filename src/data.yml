@@ -1,0 +1,4 @@
+calculators:
+  - name: EHP Calculator
+    description: Calculates your Effective Health from your Health and Defense.
+    link: /ehp
