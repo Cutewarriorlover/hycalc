@@ -2,3 +2,6 @@ calculators:
   - name: EHP Calculator
     description: Calculates your Effective Health from your Health and Defense.
     link: /ehp
+  - name: Interest Calculator
+    description: Calculate the amount of money you can get from the Bank's interest!
+    unfinished: true

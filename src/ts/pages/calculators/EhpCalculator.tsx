@@ -1,13 +1,19 @@
-import React, { Component, RefObject } from "react";
+import React, { Component, ReactElement, RefObject } from "react";
 import "../../../styles/pages/Calculator.scss";
 import { calcEhp } from "../../calculations/ehp";
 import { setInputFilter } from "../../validation";
+import EhpCard from "../cards/EhpCard";
 
 export default class EhpCalculator extends Component {
   private healthRef: RefObject<any>;
   private defenseRef: RefObject<any>;
   private submitRef: RefObject<any>;
   private resultRef: RefObject<any>;
+
+  state: {
+    results: Array<ReactElement>;
+    key: number;
+  };
 
   constructor(props: object) {
     super(props);
@@ -16,6 +22,11 @@ export default class EhpCalculator extends Component {
     this.defenseRef = React.createRef();
     this.submitRef = React.createRef();
     this.resultRef = React.createRef();
+
+    this.state = {
+      results: [],
+      key: 0,
+    };
   }
 
   componentDidMount() {
@@ -26,10 +37,20 @@ export default class EhpCalculator extends Component {
       const defense = parseInt(this.defenseRef.current.value || 0);
 
       const ehp = calcEhp(health, defense);
+      const healthWeight = calcEhp(health + 1, defense) - ehp;
+      const defenseWeight = calcEhp(health, defense + 1) - ehp;
 
-      const result = `Effective Health: ${ehp}`;
-
-      this.resultRef.current.textContent = result;
+      this.setState({
+        results: [
+          <EhpCard
+            ehp={ehp}
+            healthWeight={healthWeight}
+            defenseWeight={defenseWeight}
+            key={this.state.key}
+          />,
+        ].concat(this.state.results),
+        key: this.state.key + 1,
+      });
     });
   }
 
@@ -80,11 +101,13 @@ export default class EhpCalculator extends Component {
           </button>
         </div>
 
-        <h2>Result</h2>
+        <h2>Results History</h2>
 
         <br />
 
-        <p ref={this.resultRef}>Effective Health: 0</p>
+        <div className="ehp-calculator__results" ref={this.resultRef}>
+          {this.state.results}
+        </div>
       </div>
     );
   }
