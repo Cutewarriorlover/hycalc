@@ -1,10 +1,10 @@
 export const selectStyles = {
-  menu: (provided: object, state: { isSelected: boolean }) => ({
+  menu: (provided: object, state: any) => ({
     ...provided,
 
     backgroundColor: "#454863",
   }),
-  control: (provided: object, state: { isSelected: boolean }) => ({
+  control: (provided: object, state: any) => ({
     ...provided,
 
     backgroundColor: "#303245",
@@ -13,17 +13,17 @@ export const selectStyles = {
     padding: "8px 10px 0",
     marginTop: 40,
   }),
-  singleValue: (provided: object, state: { isSelected: boolean }) => ({
+  singleValue: (provided: object, state: any) => ({
     ...provided,
 
     color: "#eee",
   }),
-  placeholder: (provided: object, state: { isSelected: boolean }) => ({
+  placeholder: (provided: object, state: any) => ({
     ...provided,
 
     color: "#65657b",
   }),
-  option: (provided: object, state: { isSelected: boolean }) => ({
+  option: (provided: object, state: any) => ({
     ...provided,
 
     ":hover": {
