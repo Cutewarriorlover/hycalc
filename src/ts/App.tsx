@@ -9,6 +9,7 @@ import data from "../data.yml";
 import Unfinished from "./pages/Unfinished";
 import Index from "./pages/Index";
 import EhpCalculator from "./pages/calculators/EhpCalculator";
+import InterestCalculator from "./pages/calculators/InterestCalculator";
 
 export { data };
 
@@ -33,6 +34,10 @@ function App() {
 
           <Route path="/calculators/ehp">
             <EhpCalculator />
+          </Route>
+
+          <Route path="/calculators/interest">
+            <InterestCalculator />
           </Route>
         </Router>
       </div>

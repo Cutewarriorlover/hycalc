@@ -1,12 +1,23 @@
 import React, { Component, ReactElement, RefObject } from "react";
 import "../../../styles/pages/Calculator.scss";
-import { calcEhp } from "../../calculations/ehp";
+import Select from "react-select";
 import Cleave from "cleave.js/react";
-import EhpCard from "../cards/EhpCard";
+import { selectStyles } from "../../styles";
+import { BankLevel, calcInterest } from "../../calculations/interest";
+import InterestCard from "../cards/InterestCard";
 
-export default class EhpCalculator extends Component {
-  private healthRef: any;
-  private defenseRef: any;
+const bankLevels = {
+  starter: BankLevel.STARTER,
+  gold: BankLevel.GOLD,
+  deluxe: BankLevel.DELUXE,
+  super_deluxe: BankLevel.SUPER_DELUXE,
+  premier: BankLevel.PREMIER,
+};
+
+export default class InterestCalculator extends Component {
+  private startCoinsRef: any;
+  private afkHoursRef: any;
+  private bankLevelRef: RefObject<any>;
   private submitRef: RefObject<any>;
   private resultRef: RefObject<any>;
 
@@ -17,6 +28,10 @@ export default class EhpCalculator extends Component {
 
   constructor(props: object) {
     super(props);
+
+    this.startCoinsRef = React.createRef();
+    this.afkHoursRef = React.createRef();
+    this.bankLevelRef = React.createRef();
 
     this.submitRef = React.createRef();
     this.resultRef = React.createRef();
@@ -29,19 +44,21 @@ export default class EhpCalculator extends Component {
 
   componentDidMount() {
     this.submitRef.current.addEventListener("click", () => {
-      const health = parseInt(this.healthRef.value.replace(",", "") || 0);
-      const defense = parseInt(this.defenseRef.value.replace(",", "") || 0);
+      const bankLevel =
+        bankLevels[
+          this.bankLevelRef.current?.state?.value?.value as bankLevel
+        ] ?? BankLevel.STARTER;
 
-      const ehp = calcEhp(health, defense);
-      const healthWeight = calcEhp(health + 1, defense) - ehp;
-      const defenseWeight = calcEhp(health, defense + 1) - ehp;
+      const startingCoins = parseInt(this.startCoinsRef.value.replace(",", ""));
+      const afkHours = parseInt(this.afkHoursRef.value.replace(",", ""));
+
+      const result = calcInterest(startingCoins, afkHours, bankLevel);
 
       this.setState({
         results: [
-          <EhpCard
-            ehp={ehp}
-            healthWeight={healthWeight}
-            defenseWeight={defenseWeight}
+          <InterestCard
+            finalCoins={result.finalCoins}
+            earnedCoins={result.earnedCoins}
             key={this.state.key}
           />,
         ].concat(this.state.results),
@@ -53,7 +70,7 @@ export default class EhpCalculator extends Component {
   render() {
     return (
       <div className="EhpCalculator">
-        <h1>EHP Calculator</h1>
+        <h1>Interest Calculator</h1>
 
         <a href="/calc-list">
           <i className="fas fa-angle-left"></i> Back to Calculator List
@@ -61,8 +78,10 @@ export default class EhpCalculator extends Component {
 
         <p>
           <br />
-          <b>EHP</b>, also known as <b>Effective Health</b>, is the amount of
-          damage you may receive before dying.
+          In Hypixel Skyblock, every season, otherwise known as 31 earth hours,
+          you receive <b>Interest</b>. <b>Interest</b> is a small increase of
+          coins, which is added based on the amount of original coins in your
+          Bank.
         </p>
 
         <div className="calculator__form">
@@ -73,13 +92,12 @@ export default class EhpCalculator extends Component {
                 numeralThousandsGroupStyle: "thousand",
               }}
               name="health"
-              type="numeric"
               placeholder=" "
-              ref={this.healthRef}
+              htmlRef={(ref) => (this.startCoinsRef = ref)}
             />
             <div className="cut" />
             <label htmlFor="health" className="placeholder">
-              Health
+              Current Coins
             </label>
           </div>
 
@@ -90,16 +108,26 @@ export default class EhpCalculator extends Component {
                 numeralThousandsGroupStyle: "thousand",
               }}
               name="defense"
-              type="numeric"
               placeholder=" "
-              ref={this.defenseRef}
+              htmlRef={(ref) => (this.afkHoursRef = ref)}
             />
             <div className="cut" />
             <label htmlFor="defense" className="placeholder">
-              Defense
+              AFK Hours
             </label>
           </div>
 
+          <Select
+            styles={selectStyles}
+            ref={this.bankLevelRef}
+            options={[
+              { value: "starter", label: "Starter" },
+              { value: "gold", label: "Gold" },
+              { value: "deluxe", label: "Deluxe" },
+              { value: "super_deluxe", label: "Super Deluxe" },
+              { value: "premier", label: "Premier" },
+            ]}
+          />
           <button className="submit" ref={this.submitRef}>
             Calculate!
           </button>

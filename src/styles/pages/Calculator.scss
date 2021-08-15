@@ -6,7 +6,11 @@
   box-sizing: border-box;
   padding: 20px;
 
-  .input-container {
+  .rfs-option {
+    color: black;
+  }
+
+  .input-container, select {
     height: 50px;
     position: relative;
     width: 100%;
@@ -49,7 +53,7 @@
 
   .placeholder {
     color: #65657b;
-    font-family: sans-serif;
+    font-family: "Montserrat";
     left: 20px;
     line-height: 14px;
     pointer-events: none;
@@ -87,6 +91,6 @@
     top: -20px;
     transform: translateY(0);
     transition: transform 200ms;
-    width: 76px;
+    width: 175px;
   }
 }
