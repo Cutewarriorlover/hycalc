@@ -4,4 +4,4 @@ calculators:
     link: /ehp
   - name: Interest Calculator
     description: Calculate the amount of money you can get from the Bank's interest!
-    unfinished: true
+    link: /interest
