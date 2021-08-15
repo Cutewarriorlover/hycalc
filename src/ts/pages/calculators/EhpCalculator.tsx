@@ -75,7 +75,7 @@ export default class EhpCalculator extends Component {
               name="health"
               type="numeric"
               placeholder=" "
-              ref={this.healthRef}
+              htmlRef={ref => this.healthRef = ref}
             />
             <div className="cut" />
             <label htmlFor="health" className="placeholder">
@@ -92,7 +92,7 @@ export default class EhpCalculator extends Component {
               name="defense"
               type="numeric"
               placeholder=" "
-              ref={this.defenseRef}
+              htmlRef={ref => this.defenseRef = ref}
             />
             <div className="cut" />
             <label htmlFor="defense" className="placeholder">
