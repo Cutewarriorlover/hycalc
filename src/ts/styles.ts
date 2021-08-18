@@ -11,7 +11,6 @@ export const selectStyles = {
     border: "none",
     borderRadius: 12,
     padding: "8px 10px 0",
-    marginTop: 40,
   }),
   singleValue: (provided: object, state: any) => ({
     ...provided,
@@ -22,6 +21,11 @@ export const selectStyles = {
     ...provided,
 
     color: "#65657b",
+  }),
+  input: (provided: object, state: any) => ({
+    ...provided,
+
+    color: "#eee",
   }),
   option: (provided: object, state: any) => ({
     ...provided,

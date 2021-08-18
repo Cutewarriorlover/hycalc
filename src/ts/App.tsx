@@ -6,12 +6,14 @@ import "../styles/App.scss";
 
 // @ts-ignore
 import data from "../data.yml";
+import minions from "../minions.yml";
 import Unfinished from "./pages/Unfinished";
 import Index from "./pages/Index";
 import EhpCalculator from "./pages/calculators/EhpCalculator";
 import InterestCalculator from "./pages/calculators/InterestCalculator";
+import MinionCalculator from "./pages/calculators/MinionCalculator";
 
-export { data };
+export { data, minions };
 
 function App() {
   return (
@@ -38,6 +40,10 @@ function App() {
 
           <Route path="/calculators/interest">
             <InterestCalculator />
+          </Route>
+
+          <Route path="/calculators/minion">
+            <MinionCalculator />
           </Route>
         </Router>
       </div>

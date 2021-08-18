@@ -5,3 +5,6 @@ calculators:
   - name: Interest Calculator
     description: Calculate the amount of money you can get from the Bank's interest!
     link: /interest
+  - name: Minion Calculator
+    description: Calculate the amount of resources your minion can collect in a set amount of time!
+    link: /minion

@@ -1,0 +1,49 @@
+select:
+  - label: Wheat Minion
+  - label: Carrot Minion
+  - label: Potato Minion
+  - label: Pumpkin Minion
+  - label: Melon Minion
+  - label: Mushroom Minion
+  - label: Cocoa Beans Minion
+  - label: Cactus Minion
+  - label: Sugar Cane Minion
+  - label: Nether Wart Minion
+  - label: Cow Minion
+  - label: Pig Minion
+  - label: Chicken Minion
+  - label: Sheep Minion
+  - label: Rabbit Minion
+  - label: Cobblestone Minion
+  - label: Coal Minion
+  - label: Iron Minion
+  - label: Gold Minion
+  - label: Diamond Minion
+  - label: Lapis Minion
+  - label: Emerald Minion
+  - label: Redstone Minion
+  - label: Quartz Minion
+  - label: Obsidian Minion
+  - label: Glowstone Minion
+  - label: Gravel Minion
+  - label: Ice Minion
+  - label: Sand Minion
+  - label: Zombie Minion
+  - label: Skeleton Minion
+  - label: Spider Minion
+  - label: Cave Spider Minion
+  - label: Creeper Minion
+  - label: Enderman Minion
+  - label: Ghast Minion
+  - label: Slime Minion
+  - label: Blaze Minion
+  - label: Magma Cube Minion
+  - label: Oak Minion
+  - label: Spruce Minion
+  - label: Birch Minion
+  - label: Dark Oak Minion
+  - label: Acacia Minion
+  - label: Jungle Minion
+  - label: Fishing Minion
+  - label: Clay Minion
+  - label: Flower Minion

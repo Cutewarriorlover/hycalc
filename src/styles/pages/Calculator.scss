@@ -51,6 +51,10 @@
     }
   }
 
+  .input-container:not(:first-child) {
+    margin-top: 40px;
+  }
+
   .placeholder {
     color: #65657b;
     font-family: "Montserrat";
